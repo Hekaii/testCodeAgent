@@ -1,0 +1,60 @@
+project:
+  key: test-code-agent
+  name: test-code-agent
+  description: lightweight pseudo training project for platform closure test
+  defaultBranch: main
+
+runtime:
+  preferredOs: windows
+  pythonVersion: "3.11"
+  useConda: false
+  condaEnvName: ""
+  useDocker: false
+
+checkout:
+  fetchSubmodules: false
+  lfs: false
+
+prepare:
+  linux:
+    - "python -c \"print('prepare ok')\""
+  windows:
+    - "python -c \"print('prepare ok')\""
+
+baseline:
+  linux:
+    - "python train.py --mode baseline --epochs 3 --output outputs/latest/metrics.json"
+  windows:
+    - "python train.py --mode baseline --epochs 3 --output outputs/latest/metrics.json"
+
+train:
+  linux:
+    - "python train.py --mode train --epochs 5 --output outputs/latest/metrics.json"
+  windows:
+    - "python train.py --mode train --epochs 5 --output outputs/latest/metrics.json"
+
+validate:
+  linux:
+    - "python -m py_compile train.py"
+  windows:
+    - "python -m py_compile train.py"
+
+metrics:
+  primaryMetric: score
+  parserType: json_file
+  parserTarget: outputs/latest/metrics.json
+  goalExpression: "score >= 0.90"
+  extraRules:
+    - "train_val_gap <= 0.03"
+    - "loss_std_last5 <= 0.01"
+    - "best_epoch <= 10"
+
+artifacts:
+  include:
+    - "outputs/**"
+    - "logs/**"
+
+git:
+  pushBranchPattern: "exp/{projectKey}/{runId}"
+  commitMessageTemplate: "feat(auto-opt): run {runId} iteration {iteration}"
+
