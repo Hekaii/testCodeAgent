@@ -1,0 +1,5 @@
+paper_id,title,abstract,venue,label
+D001,Retrieval Augmented Paper Ranking,Retrieval augmented ranking improves evidence tracing and benchmark stability on scientific corpora.,ACL,1
+D002,Template Based Section Labeling,Template based section labeling is efficient but struggles on long contextual dependencies.,ArXiv,0
+D003,Graph Contrastive Learning for Citation Graphs,Graph contrastive learning enhances citation graph reasoning with robust neighborhood features.,NeurIPS,1
+D004,Frequency Statistics for Topic Routing,We route paper topics using raw frequency statistics and hand tuned thresholds.,Workshop,0

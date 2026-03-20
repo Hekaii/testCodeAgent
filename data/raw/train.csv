@@ -1,0 +1,9 @@
+paper_id,title,abstract,venue,label
+T001,Graph Transformer for Retrieval,We combine graph transformer blocks with retrieval augmentation for robust document ranking in low resource settings.,NeurIPS,1
+T002,Lightweight Baseline for Citation Intent,This baseline uses sparse lexical overlap and simple section statistics for citation intent prediction.,Workshop,0
+T003,Multimodal Knowledge Distillation,The model aligns figure captions tables and abstract tokens through multimodal knowledge distillation.,CVPR,1
+T004,Rule Driven Document Tagging,We study a rule driven pipeline for document tagging without deep contextual encoders.,ArXiv,0
+T005,Temporal Contrastive Pretraining for Papers,Temporal contrastive objectives improve scientific paper representations across yearly snapshots.,ICLR,1
+T006,Classical Feature Engineering for Abstract Classification,The system relies on tf style counts handcrafted metadata and shallow validation heuristics.,AAAI,0
+T007,Robust Benchmark for Long Scientific Documents,We release a robust benchmark for long scientific documents and hierarchical retrieval evaluation.,KDD,1
+T008,Keyword Heuristics for Venue Prediction,This work predicts venue categories with keyword heuristics and a compact decision routine.,Workshop,0

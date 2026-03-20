@@ -1,5 +1,13 @@
 __pycache__/
 *.pyc
-outputs/
-logs/
+*.pyo
+.pytest_cache/
 
+logs/*
+!logs/.gitkeep
+
+outputs/*
+!outputs/.gitkeep
+!outputs/reports/
+outputs/reports/*
+!outputs/reports/.gitkeep

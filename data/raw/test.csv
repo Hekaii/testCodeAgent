@@ -1,0 +1,5 @@
+paper_id,title,abstract,venue,label
+E001,Multimodal Benchmark for Research Assistants,We benchmark multimodal research assistants on abstract understanding evidence retrieval and report generation.,EMNLP,1
+E002,Simple Header Matching Baseline,This baseline matches section headers and sentence positions without contextual modeling.,ArXiv,0
+E003,Knowledge Enhanced Transformer Reader,Knowledge enhanced transformer readers improve grounding quality on long scientific documents.,ICLR,1
+E004,Manual Rule Set for Abstract Screening,A manual rule set provides acceptable precision but unstable recall across domains.,AAAI,0

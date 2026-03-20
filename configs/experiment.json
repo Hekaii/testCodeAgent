@@ -1,0 +1,41 @@
+{
+  "projectName": "paper-code-simulation",
+  "seed": 42,
+  "dataset": {
+    "train_file": "train.csv",
+    "dev_file": "dev.csv",
+    "test_file": "test.csv"
+  },
+  "features": {
+    "keyword_boost_terms": [
+      "transformer",
+      "graph",
+      "retrieval",
+      "multimodal",
+      "benchmark",
+      "contrastive",
+      "temporal",
+      "robust",
+      "diffusion",
+      "knowledge"
+    ],
+    "venue_bias": {
+      "NeurIPS": 0.060,
+      "ICLR": 0.055,
+      "ACL": 0.045,
+      "EMNLP": 0.040,
+      "CVPR": 0.050,
+      "KDD": 0.040,
+      "AAAI": 0.032,
+      "ArXiv": 0.010,
+      "Workshop": -0.015
+    }
+  },
+  "training": {
+    "baseline_epochs": 4,
+    "train_epochs": 8,
+    "baseline_score_floor": 0.842,
+    "train_score_floor": 0.905,
+    "train_score_ceiling": 0.924
+  }
+}

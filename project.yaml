@@ -1,11 +1,11 @@
 project:
   key: test-code-agent
   name: test-code-agent
-  description: lightweight pseudo training project for platform closure test
+  description: simulated paper training project for AIRunning end-to-end testing
   defaultBranch: main
 
 runtime:
-  preferredOs: windows
+  preferredOs: linux
   pythonVersion: "3.11"
   useConda: false
   condaEnvName: ""
@@ -17,32 +17,32 @@ checkout:
 
 prepare:
   linux:
-    - "python -c \"print('prepare ok')\""
+    - "python scripts/run_experiment.py --mode dry-run --config configs/experiment.json --data-dir data/raw --output outputs/reports/final_metrics.csv"
   windows:
-    - "python -c \"print('prepare ok')\""
+    - "python scripts/run_experiment.py --mode dry-run --config configs/experiment.json --data-dir data/raw --output outputs/reports/final_metrics.csv"
 
 baseline:
   linux:
-    - "python train.py --mode baseline --epochs 3 --output outputs/latest/metrics.json"
+    - "python scripts/run_experiment.py --mode baseline --config configs/experiment.json --data-dir data/raw --output outputs/reports/final_metrics.csv"
   windows:
-    - "python train.py --mode baseline --epochs 3 --output outputs/latest/metrics.json"
+    - "python scripts/run_experiment.py --mode baseline --config configs/experiment.json --data-dir data/raw --output outputs/reports/final_metrics.csv"
 
 train:
   linux:
-    - "python train.py --mode train --epochs 5 --output outputs/latest/metrics.json"
+    - "python scripts/run_experiment.py --mode train --config configs/experiment.json --data-dir data/raw --output outputs/reports/final_metrics.csv"
   windows:
-    - "python train.py --mode train --epochs 5 --output outputs/latest/metrics.json"
+    - "python scripts/run_experiment.py --mode train --config configs/experiment.json --data-dir data/raw --output outputs/reports/final_metrics.csv"
 
 validate:
   linux:
-    - "python -m py_compile train.py"
+    - "python -m compileall train scripts"
   windows:
-    - "python -m py_compile train.py"
+    - "python -m compileall train scripts"
 
 metrics:
   primaryMetric: score
-  parserType: json_file
-  parserTarget: outputs/latest/metrics.json
+  parserType: csv_file
+  parserTarget: outputs/reports/final_metrics.csv
   goalExpression: "score >= 0.90"
   extraRules:
     - "train_val_gap <= 0.03"
@@ -53,8 +53,8 @@ artifacts:
   include:
     - "outputs/**"
     - "logs/**"
+    - "configs/**"
 
 git:
   pushBranchPattern: "exp/{projectKey}/{runId}"
   commitMessageTemplate: "feat(auto-opt): run {runId} iteration {iteration}"
-
